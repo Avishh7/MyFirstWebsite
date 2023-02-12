@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>My Dynamic Website</title>
+
+    <link rel="stylesheet" type="text/css" href="style.css" />
+
+    <style rel="stylesheet">
+      body {
+        color: black;
+        font-family: Arial, Helvetica, sans-serif;
+        margin: 0;
+        padding: 0;
+      }
+
+      header {
+        background-color: rgb(0, 0, 0);
+        padding: 5px;
+        text-align: center;
+        padding-right: 20px;
+      }
+
+      nav ul {
+        -webkit-text-fill-color: rgb(255, 255, 255);
+        display: flex;
+        justify-content: right;
+        list-style: none;
+        margin: 0px;
+        padding: 0px;
+      }
+
+      nav a {
+        display: block;
+        padding: 10px 10px;
+        color: rgb(255, 255, 255);
+        text-decoration: none;
+      }
+
+      main {
+        padding-left: 20px;
+        padding-top: 10px;
+      }
+
+      section h1 {
+        font-size: 2em;
+        margin-top: 0;
+        color: black;
+      }
+
+      form input[type="text"],
+      form input[type="email"],
+      form textarea {
+        display: block;
+        width: 100%;
+        padding: 10px;
+      }
+
+      p1 {
+        font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+          "Lucida Sans", Arial, sans-serif;
+        font-size: xx-large;
+        color: #eee;
+        display: flex;
+        text-align: left;
+        margin: 0px;
+        padding-top: 20px;
+        padding-left: 10px;
+      }
+
+      <!--Design for imputs -- > .input-group {
+        position: relative;
+      }
+
+      .input {
+        border: solid 1.5px #9e9e9e;
+        border-radius: 500px;
+        background: none;
+        padding: 1rem;
+        font-size: 1rem;
+        color: #000000;
+        transition: border 150ms cubic-bezier(0.4, 0, 0.2, 1);
+      }
+
+      .user-label {
+        position: top;
+        left: 15px;
+        color: #000000;
+        pointer-events: none;
+        transform: translateY(1rem);
+        transition: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+      }
+
+      .input:focus,
+      input:valid {
+        outline: none;
+        border: 1.5px solid #1a73e8;
+      }
+
+      .input:focus ~ label,
+      input:valid ~ label {
+        transform: translateY(-50%) scale(0.8);
+        background-color: #ffffff;
+        padding: 0 0.2em;
+        color: #2196f3;
+      }
+
+      input {
+        color: #000000;
+        padding: 15px 15px;
+        cursor: pointer;
+      }
+      /* Back to top button */
+      button {
+        width: 140px;
+        height: 56px;
+        overflow: hidden;
+        border: none;
+        color: rgb(0, 0, 0);
+        background: none;
+        position: relative;
+        padding-bottom: 2em;
+      }
+
+      button > div,
+      button > svg {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        display: flex;
+      }
+
+      button:before {
+        content: "";
+        position: absolute;
+        height: 2px;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        transform: scaleX(0);
+        transform-origin: bottom right;
+        background: currentColor;
+        transition: transform 0.25s ease-out;
+      }
+
+      button:hover:before {
+        transform: scaleX(1);
+        transform-origin: bottom left;
+      }
+
+      button .clone > *,
+      button .text > * {
+        opacity: 1;
+        font-size: 1.3rem;
+        transition: 0.2s;
+        margin-left: 4px;
+      }
+
+      button .clone > * {
+        transform: translateY(60px);
+      }
+
+      button:hover .clone > * {
+        opacity: 1;
+        transform: translateY(0px);
+        transition: all 0.2s cubic-bezier(0.215, 0.61, 0.355, 1) 0s;
+      }
+
+      button:hover .text > * {
+        opacity: 1;
+        transform: translateY(-60px);
+        transition: all 0.2s cubic-bezier(0.215, 0.61, 0.355, 1) 0s;
+      }
+
+      button:hover .clone > :nth-child(1) {
+        transition-delay: 0.15s;
+      }
+
+      button:hover .clone > :nth-child(2) {
+        transition-delay: 0.2s;
+      }
+
+      button:hover .clone > :nth-child(3) {
+        transition-delay: 0.25s;
+      }
+
+      button:hover .clone > :nth-child(4) {
+        transition-delay: 0.3s;
+      }
+      /* icon style and hover */
+      button svg {
+        width: 20px;
+        right: 0;
+        top: 50%;
+        transform: translateY(-50%) rotate(-50deg);
+        transition: 0.2s ease-out;
+      }
+
+      button:hover svg {
+        transform: translateY(-50%) rotate(-90deg);
+        cursor: pointer;
+      }
+
+      /* submit button*/
+      .submit {
+        position: relative;
+        padding: 1em 1.8em;
+        outline: none;
+        border: 1px solid #303030;
+        background: #000000;
+        color: #ffffff;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        font-size: 15px;
+        overflow: hidden;
+        transition: 0.2s;
+        border-radius: 20px;
+        cursor: pointer;
+        font-weight: bold;
+      }
+
+      .submit:hover {
+        box-shadow: 0 0 10px #c87ceb, 0 0 25px #c87ceb, 0 0 50px #c87ceb;
+        transition-delay: 0.6s;
+      }
+
+      .submit span {
+        position: absolute;
+      }
+
+      .submit span:nth-child(1) {
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 2px;
+        background: linear-gradient(90deg, transparent, #ae00ff);
+      }
+
+      .submit:hover span:nth-child(1) {
+        left: 100%;
+        transition: 0.7s;
+      }
+
+      .submit span:nth-child(3) {
+        bottom: 0;
+        right: -100%;
+        width: 100%;
+        height: 2px;
+        background: linear-gradient(90deg, transparent, #001eff);
+      }
+
+      .submit:hover span:nth-child(3) {
+        right: 100%;
+        transition: 0.7s;
+        transition-delay: 0.35s;
+      }
+
+      .submit span:nth-child(2) {
+        top: -100%;
+        right: 0;
+        width: 2px;
+        height: 100%;
+        background: linear-gradient(180deg, transparent, #ae00ff);
+      }
+
+      .submit:hover span:nth-child(2) {
+        top: 100%;
+        transition: 0.7s;
+        transition-delay: 0.17s;
+      }
+
+      .submit span:nth-child(4) {
+        bottom: -100%;
+        left: 0;
+        width: 2px;
+        height: 100%;
+        background: linear-gradient(360deg, transparent, #001eff);
+      }
+
+      .submit:hover span:nth-child(4) {
+        bottom: 100%;
+        transition: 0.7s;
+        transition-delay: 0.52s;
+      }
+
+      .submit:active {
+        background: #000000;
+        background: linear-gradient(to top right, #ae00af, #001eff);
+        color: #bfbfbf;
+        box-shadow: 0 0 8px #ae00ff, 0 0 8px #001eff, 0 0 8px #ae00ff;
+        transition: 0.1s;
+      }
+
+      .submit:active
+        span:nth-child(1)
+        span:nth-child(2)
+        span:nth-child(2)
+        span:nth-child(2) {
+        transition: none;
+        transition-delay: none;
+      }
+    </style>
+  </head>
+  <body>
+    <header id="bookmark">
+      <nav>
+        <p1>Avish Judnarain</p1>
+        <ul>
+          <li><a href="#about">About</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </header>
+    <br />
+    <main>
+      <section id="about">
+        <h1>About Me</h1>
+        <p2>I am a web developer.</p2>
+      </section>
+      <section id="services">
+        <h1>Services</h1>
+        <ul>
+          <li>Website Design</li>
+          <li>Web Development</li>
+          <li>E-commerce Solutions</li>
+        </ul>
+      </section>
+      <br />
+      <section>
+        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Molestias
+        dolores, ducimus rerum consectetur eligendi repellendus a velit
+        voluptatum magni, sed accusamus maxime, nemo amet voluptatibus?
+        Voluptates, consequatur accusantium? Officiis nesciunt laboriosam nam
+        corrupti exercitationem! Eos quo in beatae quam blanditiis sunt, aperiam
+        cupiditate vitae dicta fugit eveniet maxime tempora sequi inventore amet
+        ipsum assumenda cum nam repellendus praesentium dignissimos aliquam
+        dolorum fuga. Quidem laborum molestiae quisquam. Quam a voluptatibus
+        unde molestiae nemo quod nostrum, dolor amet eum aspernatur quae minus
+        magni tempora perferendis repudiandae qui earum sit, numquam vero
+        quibusdam quisquam. Esse dolorem hic in, iusto error repellendus, neque
+        nihil sequi consequatur molestiae praesentium, impedit veritatis.
+        Nostrum facilis enim rerum neque error assumenda reiciendis itaque at
+        ratione tempora culpa dolorum optio iure modi molestias nesciunt
+        tenetur, dicta sunt distinctio omnis ducimus architecto, nihil totam
+        nam. Adipisci vero voluptates est quasi eius sit minus, aspernatur, fuga
+        nihil ex numquam laborum assumenda? Distinctio blanditiis quam velit
+        iure facilis, nobis, ut cum minima odio ab perferendis repellendus modi
+        animi recusandae. Voluptatem impedit quisquam ab, a minima sed eligendi
+        consectetur magni obcaecati delectus qui quaerat? Velit assumenda
+        facilis quis ut molestias culpa inventore, eligendi perspiciatis. Quo
+        aut totam iusto ipsum velit beatae veniam repudiandae harum quaerat
+        mollitia, alias possimus autem. Iusto, est soluta! Id ullam optio
+        consequatur, quaerat culpa illo molestiae totam architecto dolores quo
+        perferendis odio modi ipsa quibusdam libero minus veritatis expedita cum
+        illum sequi corrupti at pariatur consectetur ad. Debitis expedita
+        consequatur sed animi eos ducimus labore harum cumque eius nobis atque
+        adipisci, cum facere vel totam velit obcaecati blanditiis, perferendis
+        eaque dolor quo eligendi soluta asperiores? Soluta eos deleniti
+        distinctio ducimus consectetur rem eum perferendis maiores dolores,
+        rerum cumque suscipit corporis deserunt? Culpa asperiores quibusdam sint
+        veritatis voluptas placeat. Suscipit, facilis, repudiandae hic quo omnis
+        reiciendis deserunt quasi necessitatibus earum atque voluptate quidem
+        modi nam ipsum sunt. Ducimus esse iure minus magnam officia debitis
+        perspiciatis dolores dicta in, animi cum architecto voluptas facere quae
+        aliquid ut, deleniti dolorem. Hic numquam itaque reiciendis, doloremque
+        in modi consequuntur dicta, dolor provident minus, asperiores obcaecati
+        eius. Magnam vero quos illo quod, ipsam a praesentium corporis dolor?
+        Tenetur nam, hic accusantium rem aliquam quidem eligendi enim esse
+        pariatur necessitatibus eius dignissimos? Facere explicabo commodi
+        inventore neque quae voluptatem soluta saepe harum. Temporibus corrupti
+        tempore consequatur laboriosam dolorem ut enim voluptatibus ea rem,
+        harum voluptates illum accusantium hic sint. Obcaecati nesciunt atque
+        modi rerum. Eos! ipsum dolor sit amet consectetur adipisicing elit.
+        Cumque odit veniam, porro pariatur itaque provident. Alias laboriosam,
+        delectus qui eum ut veritatis excepturi nihil officiis mollitia
+        distinctio modi nisi dolores fugiat aspernatur esse expedita animi
+        molestiae voluptas numquam obcaecati veniam doloribus? Corrupti sunt hic
+        quidem facilis, dolor amet illum aliquam officiis rem minima illo eos
+        non, porro ab esse perferendis quam fuga nulla nobis saepe soluta nisi
+        optio. Ratione facilis molestias autem sit, libero laboriosam ex,
+        voluptates commodi sunt quidem quaerat expedita nisi totam cupiditate
+        eos illo unde ab enim dolores saepe repellendus ea nulla perspiciatis
+        ipsam. Voluptas distinctio nisi harum, blanditiis impedit dolor debitis
+        similique. Veritatis dolore laborum, fuga hic maiores natus accusamus
+        eum id temporibus amet accusantium culpa laudantium, illum quo eos omnis
+        voluptas tenetur, fugit maxime quae eius nisi suscipit nobis iusto.
+        Laboriosam accusantium voluptatem quod sapiente quaerat deleniti dolorum
+        vero vel molestiae, quasi ducimus ipsam similique veniam sit atque aut
+        amet nostrum unde nihil porro! Veniam quaerat voluptas beatae dolorum
+        est! Nemo suscipit repellat pariatur non, numquam minus libero magnam
+        soluta repellendus assumenda, ratione nihil perferendis neque dolorem
+        atque, ut autem! At fugiat voluptatibus nostrum adipisci! Dicta commodi
+        delectus, voluptate ab aliquam iure distinctio porro quod!
+      </section>
+      <br />
+      <section id="contact">
+        <br />
+        <h1>Contact Me</h1>
+        <form action="submit-form.php" method="post">
+          <div class="input-group">
+            <input
+              required=""
+              type="text"
+              name="text"
+              autocomplete="off"
+              class="input"
+            />
+            <label class="user-label">First Name</label>
+          </div>
+          <br />
+          <br />
+          <div class="input-group">
+            <input
+              required=""
+              type="text"
+              name="text"
+              autocomplete="off"
+              class="input"
+            />
+            <label class="user-label">Surname</label>
+          </div>
+          <br />
+          <br />
+          <div class="input-group">
+            <input
+              required=""
+              type="text"
+              name="text"
+              autocomplete="off"
+              class="input"
+            />
+            <label class="user-label">Email Address</label>
+          </div>
+          <br />
+          <button1>
+            <input class="submit" type="submit" value="Submit" />
+          </button1>
+        </form>
+      </section>
+      <br />
+      <section>
+        <a href="#bookmark">
+          <button>
+            <div class="text">
+              <span>Back</span>
+              <span>to</span>
+              <span>top</span>
+            </div>
+            <div class="clone">
+              <span>Back</span>
+              <span>to</span>
+              <span>top</span>
+            </div>
+            <svg
+              width="20px"
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-6 w-6"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M14 5l7 7m0 0l-7 7m7-7H3"
+              ></path>
+            </svg>
+          </button>
+        </a>
+      </section>
+    </main>
+    <footer>
+      <p>Copyright &copy; 2023 My Dynamic Website</p>
+    </footer>
+    <audio loop autoplay>
+      <source src="Burna_Boy_-_Alone.mp3  " type="audio/mpeg" />
+      Your browser does not support the audio element.
+    </audio>
+  </body>
+</html>
